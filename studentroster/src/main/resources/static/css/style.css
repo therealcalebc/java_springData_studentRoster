@@ -1,5 +1,24 @@
 @charset "UTF-8";
 
+html, body, .container, main {
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.container header {
+	width: 100%;
+	padding: 1vh 1vw;
+}
+
+.container main div {
+	box-sizing: border-box;
+	width: 49.8vw;
+	padding: 1vh 1vw;
+	display: inline-block;
+}
+
 table {
 	border: 1px solid black;
 }
