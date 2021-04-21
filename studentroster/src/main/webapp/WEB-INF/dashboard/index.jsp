@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Student Roster</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/dashboard.style.css" />
 </head>
 <body>
 <div class="container">
@@ -60,6 +60,31 @@
 			            <td>
 							<a href="/contactInfos/${contactInfo.id}/edit">edit</a> | 
 			            	<form action="/contactInfos/${contactInfo.id}" method="post" style="display: inline;">
+								<input type="hidden" name="_method" value="delete">
+								<input type="submit" value="delete">
+							</form>
+						</td>
+			        </tr>
+			        </c:forEach>
+			    </tbody>
+			</table>
+		</div>
+		<div>
+			<p><a href="/dorms/new">Add New Dorm</a></p>
+			<table>
+			    <thead>
+			        <tr>
+			            <th>Name</th>
+			            <th>actions</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <c:forEach items="${dorms}" var="dorm">
+			        <tr>
+			            <td><a href="/dorms/${dorm.id}"><c:out value="${dorm.name}"/></a></td>
+			            <td>
+							<a href="/dorms/${dorm.id}/edit">edit</a> | 
+			            	<form action="/dorms/${dorm.id}" method="post" style="display: inline;">
 								<input type="hidden" name="_method" value="delete">
 								<input type="submit" value="delete">
 							</form>

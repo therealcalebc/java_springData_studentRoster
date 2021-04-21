@@ -14,12 +14,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author ccomstock
@@ -47,6 +52,10 @@ public class Student implements java.io.Serializable {
     private Date updatedAt;
     @OneToOne(mappedBy="student", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private ContactInfo contactInfo;
+	@JsonIgnore
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="dojo_id")
+    private Dorm dorm;
     
     public Student() {}
     
@@ -154,6 +163,28 @@ public class Student implements java.io.Serializable {
 //	@JsonIgnore
 	public void setContactInfo(ContactInfo contactInfo) {
 		this.contactInfo = contactInfo;
+	}
+
+	/**
+	 * @return the dorm
+	 */
+	public Dorm getDorm() {
+		return dorm;
+	}
+
+	/**
+	 * @param dorm the dorm to set
+	 */
+	public void setDorm(Dorm dorm) {
+		this.dorm = dorm;
+	}
+
+	@JsonProperty("dormName")
+	public String getDormName() {
+		if(dorm != null)
+			return dorm.getName();
+		else
+			return "null";
 	}
 
 	@PrePersist

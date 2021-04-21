@@ -25,8 +25,8 @@
 		    </p>
 		    <p>
 		        <form:label path="age">Age</form:label>
-		        <form:input path="age"/>
-		        <form:errors path="age" type="number"/>
+		        <form:input path="age" type="number"/>
+		        <form:errors path="age"/>
 		    </p>
 		    <!-- <input type="submit" value="Update"/> -->
 		</form:form>

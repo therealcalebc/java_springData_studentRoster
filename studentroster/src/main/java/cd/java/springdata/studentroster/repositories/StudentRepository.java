@@ -21,6 +21,9 @@ public interface StudentRepository extends CrudRepository<Student, Long> {
 	// this method retrieves all the students from the database
 	List<Student> findAll();
 	
+	// this method retrieves all students with no Dorm assigned;
+	List<Student> findByDormIsNull();
+	
 	// this method finds students with first name containing the search string
 	List<Student> findByFirstNameContainingIgnoreCase(String search);
 	

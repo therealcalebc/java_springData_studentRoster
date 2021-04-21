@@ -3,9 +3,9 @@
  */
 package cd.java.springdata.studentroster.models;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -164,7 +164,10 @@ public class ContactInfo implements java.io.Serializable {
 
 	@JsonProperty("studentName")
 	public String getStudentName() {
-		return String.format("%s %s", student.getFirstName(), student.getLastName());
+		if(student != null)
+			return String.format("%s %s", student.getFirstName(), student.getLastName());
+		else
+			return "null";
 	}
 
 	@PrePersist

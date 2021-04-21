@@ -16,6 +16,7 @@
 		    <p>
 		        <form:label path="student">Student</form:label>
 		        <form:select path="student">
+		        	<form:option value="" selected="true" disabled="true"></form:option>
 		        	<c:forEach items="${students}" var="s">
 		        		<form:option value="${s}" label="${s.firstName} ${s.lastName}"/>
 			        </c:forEach>

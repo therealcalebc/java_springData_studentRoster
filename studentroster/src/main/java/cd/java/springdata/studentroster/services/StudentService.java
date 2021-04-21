@@ -6,6 +6,7 @@ package cd.java.springdata.studentroster.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cd.java.springdata.studentroster.models.Student;
@@ -18,11 +19,13 @@ import cd.java.springdata.studentroster.repositories.StudentRepository;
 @Service
 public class StudentService {
 	
-	private final StudentRepository studentRepository;
+	@Autowired
+	private StudentRepository studentRepository;
+//	private final StudentRepository studentRepository;
 	
-	public StudentService(StudentRepository studentRepo) {
-		studentRepository = studentRepo;
-	}
+//	public StudentService(StudentRepository studentRepo) {
+//		studentRepository = studentRepo;
+//	}
 	
 	/**
 	 * @param l the new Student to create in the db
@@ -53,6 +56,13 @@ public class StudentService {
 	 */
 	public List<Student> readManyByLastName(String search) {
 		return studentRepository.findByLastNameContainingIgnoreCase(search);
+	}
+	
+	/**
+	 * @return list of the students in the db with no associated dorm
+	 */
+	public List<Student> readManyByNullDorm() {
+		return studentRepository.findByDormIsNull();
 	}
 	
 	/**

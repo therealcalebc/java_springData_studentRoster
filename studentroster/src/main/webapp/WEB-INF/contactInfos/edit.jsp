@@ -19,7 +19,7 @@
 		        <form:select path="student">
 		        	<c:forEach items="${students}" var="s">
 		        		<c:choose>
-			        		<c:when test="${p.id == contactInfo.student.id}">
+			        		<c:when test="${s.id == contactInfo.student.id}">
 			        			<form:option value="${s}" selected="true" label="${s.firstName} ${s.lastName}"/>
 			        		</c:when>
 			        		<c:otherwise>
